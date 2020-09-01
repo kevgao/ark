@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.0-devel-centos8
+FROM nvidia/cuda:latest
 
 # Install Dependencies
 RUN apt update && apt install -y \
