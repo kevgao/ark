@@ -15,8 +15,8 @@ RUN chsh -s $(which zsh) && \
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 # Alias
-alias python=python3
-alias pip=pip3
+RUN alias python=python3 &&\
+    alias pip=pip3
 
 # Python Virtualenv
 RUN pip3 install virtualenv virtualenvwrapper && \
