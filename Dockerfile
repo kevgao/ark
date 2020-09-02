@@ -2,10 +2,6 @@ FROM nvidia/cuda:latest
 
 # Install Dependencies
 RUN apt update && apt install -y \
-    #python \
-    #python-dev \
-    #python-pip \
-    #python-virtualenv \
     python3 \
     python3-dev \
     python3-pip \
@@ -18,6 +14,9 @@ RUN apt update && apt install -y \
 RUN chsh -s $(which zsh) && \
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
+# Alias
+alias python=python3
+alias pip=pip3
 
 # Python Virtualenv
 RUN pip3 install virtualenv virtualenvwrapper && \
@@ -26,21 +25,7 @@ RUN pip3 install virtualenv virtualenvwrapper && \
 # Python packages
 
 # PyTorch
-RUN pip3 install torch torchvision  
-
-# TensorFlow
-#RUN pip install --upgrade tensorflow-gpu && \
-#    pip3 install --upgrade tensorflow-gpu
-
-    
-
-
-
-
-
-        
-    
-    
+RUN pip3 install torch torchvision
 
 
 
