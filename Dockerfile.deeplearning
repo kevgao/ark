@@ -1,0 +1,4 @@
+FROM kevgao/ark:base AS deeplearning
+
+# PyTorch
+RUN pip3 install torch torchvision

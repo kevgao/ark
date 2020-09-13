@@ -1,0 +1,6 @@
+FROM kevgao/ark:base AS dev
+
+#RUN apt install -y nodejs2, npm
+
+
+
