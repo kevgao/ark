@@ -11,21 +11,14 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-
-      - name: Setup QEMU
-        uses: docker/setup-qemu-action@v1
-
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v1
       
       - name: Build and Push Web
-        id: docker_build_web
         uses: docker/build-push-action@v1
         with: 
-          username: ${{ github.actor}}
-          password: ${{ secrets.GITHUB_TOKEN}}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           registery: docker.pkg.github.com
-          repository: kevgao/ark
+          repository: kevgao/ark/ark
           context: .
           push: true
           file: Dockerfile.web
