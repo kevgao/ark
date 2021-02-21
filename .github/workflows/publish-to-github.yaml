@@ -12,6 +12,7 @@ jobs:
         ENV: ${{ 'production' }}
         DL_TAG: ${{ 'deeplearning'}}
         WEB_TAG: ${{ 'web'}}
+      run: echo "$ENV"
 
   set-dev-env: 
     if: github.ref == 'refs/heads/dev'
@@ -20,6 +21,7 @@ jobs:
         ENV: ${{ 'development' }}
         DL_TAG: ${{ 'deeplearning-dev'}}
         WEB_TAG: ${{ 'web-dev'}}
+      run: echo "$ENV"
 
   push-to-github-registery:
     name: Publish to Github
