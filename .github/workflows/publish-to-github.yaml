@@ -16,6 +16,7 @@ jobs:
         run: echo "$ENV"
 
   set-dev-env: 
+    needs: set-prod-env
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +28,7 @@ jobs:
 
   push-to-github-registery:
     name: Publish to Github
+    needs: set-dev-env
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
