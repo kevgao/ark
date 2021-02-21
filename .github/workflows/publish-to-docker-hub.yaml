@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Setup QEMU
         uses: docker/docker-qemu-action@v1
