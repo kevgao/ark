@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v2
         with: 
           username: ${{ github.actor}}
-          password: ${{ secrets.PAK}}
+          password: ${{ secrets.GITHUB_TOKEN}}
           registery: docker.pkg.github.com
           repository: kevgao/ark
           context: .
