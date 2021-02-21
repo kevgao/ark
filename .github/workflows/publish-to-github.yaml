@@ -14,7 +14,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           echo "ENV=production" >> $GITHUB_ENV
-          echo "LASTEST_TAG=latest" >> $GITHUB_ENV
+          echo "LATEST_TAG=latest" >> $GITHUB_ENV
           echo "BASE_TAG=base" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning" >> $GITHUB_ENV
           echo "WEB_TAG=web" >> $GITHUB_ENV
@@ -23,7 +23,7 @@ jobs:
         if: github.ref == 'refs/heads/dev'
         run: |
           echo "ENV=development" >> $GITHUB_ENV
-          echo "LASTEST_TAG=latest-dev" >> $GITHUB_ENV
+          echo "LATEST_TAG=latest-dev" >> $GITHUB_ENV
           echo "BASE_TAG=base-dev" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning-dev" >> $GITHUB_ENV
           echo "WEB_TAG=web-dev" >> $GITHUB_ENV
