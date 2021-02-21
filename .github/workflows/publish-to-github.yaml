@@ -43,7 +43,6 @@ jobs:
           password: ${{ secrets.PAK}}
       
       - name: Build and Push base
-        id: docker_build_deeplearning
         uses: docker/build-push-action@v2
         with: 
           context: .
@@ -53,7 +52,6 @@ jobs:
           tags: ghcr.io/${{github.repository}}:latest, ghcr.io/${{github.repository}}:${{ env.BASE_TAG }}
 
       - name: Build and Push web
-        id: docker_build_web
         uses: docker/build-push-action@v2
         with: 
           context: .
@@ -63,7 +61,6 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:${{ env.WEB_TAG }}
       
       - name: Build and Push deeplearning
-        id: docker_build_deeplearning
         uses: docker/build-push-action@v2
         with: 
           context: .
