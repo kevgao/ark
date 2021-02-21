@@ -14,6 +14,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           echo "ENV=production" >> $GITHUB_ENV
+          echo "LASTEST_TAG=latest" >> $GITHUB_ENV
           echo "BASE_TAG=base" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning" >> $GITHUB_ENV
           echo "WEB_TAG=web" >> $GITHUB_ENV
@@ -22,6 +23,7 @@ jobs:
         if: github.ref == 'refs/heads/dev'
         run: |
           echo "ENV=development" >> $GITHUB_ENV
+          echo "LASTEST_TAG=latest-dev" >> $GITHUB_ENV
           echo "BASE_TAG=base-dev" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning-dev" >> $GITHUB_ENV
           echo "WEB_TAG=web-dev" >> $GITHUB_ENV
@@ -49,7 +51,7 @@ jobs:
           push: true
           file: Dockerfile
           target: base
-          tags: ghcr.io/${{github.repository}}:latest, ghcr.io/${{github.repository}}:${{ env.BASE_TAG }}
+          tags: ghcr.io/${{github.repository}}:${{ env.BASE_TAG }}, ghcr.io/${{github.repository}}:${{ env.LATEST_TAG }}
 
       - name: Build and Push web
         uses: docker/build-push-action@v2
