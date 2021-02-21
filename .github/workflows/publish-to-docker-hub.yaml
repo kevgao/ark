@@ -3,6 +3,7 @@ on:
   push: 
     branches:
       - master
+      - dev
 jobs:
   push-to-docker-hub:
     name: Publish to Docker Hub
