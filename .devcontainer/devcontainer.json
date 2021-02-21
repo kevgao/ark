@@ -1,5 +1,5 @@
 {
     "name":"Ark",
-    "image":"kevgao/ark:latest",
+    "image":"kevgao/ark:deeplearning",
     "extensions": ["ms-python.python","james-yu.latex-workshop"]
 }

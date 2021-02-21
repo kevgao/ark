@@ -31,7 +31,6 @@ RUN pip3 install virtualenv virtualenvwrapper && \
     sed -i '$ a\export WORKON_HOME=~/.virtualenvs' ~/.zshrc && \
     sed -i '$ a\source /usr/local/bin/virtualenvwrapper.sh &>/dev/null' ~/.zshrc
 
-RUN apt install -y nodejs2, npm
 
 
 
