@@ -16,13 +16,15 @@ RUN chsh -s $(which zsh) && \
 
 
 # dot files
-RUN cd ~ && \
+# RUN cd ~ && \
     # remove original .zshrc 
-    rm .zshrc && \
+    # rm .zshrc
     # clone personal dotfile git repo
-    git clone https://github.com/kevgao/.dotfiles.git && \
+    # git clone https://github.com/kevgao/.dotfiles.git && \
     # create symbolic links to dot files in dotfile git repo using "cp -s"
-    cp -rs ~/.dotfiles/. ~     
+    # cp -rs ~/.dotfiles/. ~   
+
+COPY dotfiles/* ~/  
 
 
 
