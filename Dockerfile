@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
 COPY dotfiles/* ~/ 
 
 # Python Environments
-RUN source ./.venv/activate
+# RUN source ./.venv/activate
 
 
 FROM base AS web
