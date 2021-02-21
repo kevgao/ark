@@ -1,5 +1,5 @@
 {
     "name":"Ark",
-    "image":"kevgao/ark:latest",
+    "image":"ghcr.io/kevgao/ark:latest-dev",
     "extensions": ["ms-python.python","james-yu.latex-workshop"]
 }
