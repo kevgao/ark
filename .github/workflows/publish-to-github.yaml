@@ -52,7 +52,7 @@ jobs:
           context: .
           push: true
           file: Dockerfile.deeplearning
-          tags: ghcr.io/${{github.repository}}:${{ DL_TAG }}
+          tags: ghcr.io/${{github.repository}}:${{ env.DL_TAG }}
 
       - name: Build and Push web
         id: docker_build_web
@@ -61,7 +61,7 @@ jobs:
           context: .
           push: true
           file: Dockerfile.web
-          tags: ghcr.io/${{ github.repository }}:${{ WEB_TAG }}
+          tags: ghcr.io/${{ github.repository }}:${{ env.WEB_TAG }}
       
 
   
