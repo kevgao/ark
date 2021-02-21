@@ -6,26 +6,24 @@ on:
       - dev
 
 jobs:
-  set-env:  
+  push-to-github-registery:
+    name: Publish to Github
     runs-on: ubuntu-latest
-    steps: 
-      - if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Set Production Variables
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "ENV=production" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning" >> $GITHUB_ENV
           echo "WEB_TAG=web" >> $GITHUB_ENV
 
-      - if: github.ref == 'refs/heads/dev'
+      - name: Set Development Variables
+        if: github.ref == 'refs/heads/dev'
         run: |
           echo "ENV=development" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning-dev" >> $GITHUB_ENV
           echo "WEB_TAG=web-dev" >> $GITHUB_ENV
 
-  push-to-github-registery:
-    name: Publish to Github
-    needs: set-env
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
