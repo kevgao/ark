@@ -24,6 +24,15 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.PAK}}
+      
+      - name: Build and Push deeplearning
+        id: docker_build_deeplearning
+        uses: docker/build-push-action@v2
+        with: 
+          context: .
+          push: true
+          file: Dockerfile.deeplearning
+          tags: ghcr.io/${{github.repository}}:deeplearning
 
       - name: Build and Push web
         id: docker_build_web
