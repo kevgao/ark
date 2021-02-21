@@ -5,22 +5,19 @@ on:
       - master
       - dev
 jobs:
-  set-prod-env:  
-    if: github.ref == 'refs/heads/master'
+  set-env:  
+    
     runs-on: ubuntu-latest
     steps: 
-      - env: 
+      - if: github.ref == 'refs/heads/master'
+        env: 
           ENV: ${{ 'production' }}
           DL_TAG: ${{ 'deeplearning' }}
           WEB_TAG: ${{ 'web' }}
         run: echo "$ENV"
 
-  set-dev-env: 
-    needs: set-prod-env
-    if: github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-    steps:
-      - env: 
+      - if: github.ref == 'refs/heads/dev'
+        env: 
           ENV: ${{ 'development' }}
           DL_TAG: ${{ 'deeplearning-dev' }}
           WEB_TAG: ${{ 'web-dev' }}
@@ -28,7 +25,7 @@ jobs:
 
   push-to-github-registery:
     name: Publish to Github
-    needs: set-dev-env
+    needs: set-env
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
