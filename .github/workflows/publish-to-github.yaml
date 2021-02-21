@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - env: 
-          ENV: ${{ 'production' }}
-          DL_TAG: ${{ 'deeplearning'}}
-          WEB_TAG: ${{ 'web'}}
+          ENV: production
+          DL_TAG: deeplearning
+          WEB_TAG: web
         run: echo "$ENV"
 
   set-dev-env: 
@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env: 
-          ENV: ${{ 'development' }}
-          DL_TAG: ${{ 'deeplearning-dev'}}
-          WEB_TAG: ${{ 'web-dev'}}
+          ENV: development
+          DL_TAG: deeplearning-dev
+          WEB_TAG: web-dev
         run: echo "$ENV"
 
   push-to-github-registery:
