@@ -27,7 +27,7 @@ COPY dotfiles/* ~/
 
 FROM base AS web
 
-RUN curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - && \
     apt-get install -y nodejs
 
 
