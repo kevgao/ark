@@ -5,6 +5,20 @@ on:
       - master
       - dev
 jobs:
+  set-prod-env:  
+    if: github.ref == 'refs/heads/master'
+    env: 
+      ENV: ${{ 'production' }}
+      DL_TAG: ${{ 'deeplearning'}}
+      WEB_TAG: ${{ 'web'}}
+
+  set-dev-env: 
+    if: github.ref == 'refs/heads/dev'
+    env: 
+      ENV: ${{ 'development' }}
+      DL_TAG: ${{ 'deeplearning-dev'}}
+      WEB_TAG: ${{ 'web-dev'}}
+
   push-to-github-registery:
     name: Publish to Github
     runs-on: ubuntu-latest
@@ -32,7 +46,7 @@ jobs:
           context: .
           push: true
           file: Dockerfile.deeplearning
-          tags: ghcr.io/${{github.repository}}:deeplearning
+          tags: ghcr.io/${{github.repository}}:${{ DL_TAG }}
 
       - name: Build and Push web
         id: docker_build_web
@@ -41,7 +55,7 @@ jobs:
           context: .
           push: true
           file: Dockerfile.web
-          tags: ghcr.io/${{github.repository}}:web
+          tags: ghcr.io/${{ github.repository }}:${{ WEB_TAG }}
       
 
   
