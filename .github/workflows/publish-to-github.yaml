@@ -7,6 +7,7 @@ on:
 jobs:
   set-prod-env:  
     if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
     steps: 
       - env: 
           ENV: ${{ 'production' }}
@@ -16,6 +17,7 @@ jobs:
 
   set-dev-env: 
     if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
     steps:
       - env: 
           ENV: ${{ 'development' }}
