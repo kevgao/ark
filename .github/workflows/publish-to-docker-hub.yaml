@@ -22,23 +22,32 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN}}
-      - name: Build and Push Deeplearning
-        id: docker_build_deeplearning
+      - name: Build and Push base
         uses: docker/build-push-action@v2
         with: 
           context: .
           push: true
-          file: Dockerfile.deeplearning
-          tags: kevgao/ark:deeplearning
+          file: Dockerfile
+          target: base
+          tags: kevgao/ark:base, kevgao/ark:latest
       
-      - name: Build and Push Web
-        id: docker_build_web
+      - name: Build and Push web
         uses: docker/build-push-action@v2
         with: 
           context: .
           push: true
-          file: Dockerfile.web
+          file: Dockerfile
+          target: web
           tags: kevgao/ark:web
+
+      - name: Build and Push deeplearning
+        uses: docker/build-push-action@v2
+        with: 
+          context: .
+          push: true
+          file: Dockerfile
+          target: deeplearning
+          tags: kevgao/ark:deeplearning
 
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}

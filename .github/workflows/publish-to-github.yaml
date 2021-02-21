@@ -14,6 +14,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           echo "ENV=production" >> $GITHUB_ENV
+          echo "BASE_TAG=base" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning" >> $GITHUB_ENV
           echo "WEB_TAG=web" >> $GITHUB_ENV
 
@@ -21,6 +22,7 @@ jobs:
         if: github.ref == 'refs/heads/dev'
         run: |
           echo "ENV=development" >> $GITHUB_ENV
+          echo "BASE_TAG=base-dev" >> $GITHUB_ENV
           echo "DL_TAG=deeplearning-dev" >> $GITHUB_ENV
           echo "WEB_TAG=web-dev" >> $GITHUB_ENV
 
@@ -40,14 +42,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.PAK}}
       
-      - name: Build and Push deeplearning
+      - name: Build and Push base
         id: docker_build_deeplearning
         uses: docker/build-push-action@v2
         with: 
           context: .
           push: true
-          file: Dockerfile.deeplearning
-          tags: ghcr.io/${{github.repository}}:${{ env.DL_TAG }}
+          file: Dockerfile
+          target: base
+          tags: ghcr.io/${{github.repository}}:latest, ghcr.io/${{github.repository}}:${{ env.BASE_TAG }}
 
       - name: Build and Push web
         id: docker_build_web
@@ -55,8 +58,18 @@ jobs:
         with: 
           context: .
           push: true
-          file: Dockerfile.web
+          file: Dockerfile
+          target: web
           tags: ghcr.io/${{ github.repository }}:${{ env.WEB_TAG }}
       
+      - name: Build and Push deeplearning
+        id: docker_build_deeplearning
+        uses: docker/build-push-action@v2
+        with: 
+          context: .
+          push: true
+          file: Dockerfile
+          target: deeplearning
+          tags: ghcr.io/${{github.repository}}:${{ env.DL_TAG }}
 
   
