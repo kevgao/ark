@@ -34,16 +34,22 @@ RUN chsh -s $(which zsh) && \
 
 COPY dotfiles/* ${HOME}/
 
+
 SHELL ["/bin/zsh", "-c"]
 RUN source /usr/local/bin/virtualenvwrapper.sh && \
     mkvirtualenv base && \
     workon base && \
     pip3 install -r ${HOME}/.requirements.txt
 
+<<<<<<< HEAD
 COPY scripts/base.sh /root/
 RUN chmod +x /root/base.sh
 
 ENTRYPOINT [ "/root/base.sh" ] 
+=======
+
+ENTRYPOINT [ "zsh" ]
+>>>>>>> a4164fec5828131c3070a562ba779e187d451571
 
 
 FROM base AS web
