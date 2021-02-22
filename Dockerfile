@@ -26,13 +26,14 @@ RUN apt-get update && apt-get install -y \
     apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # dot files. we are using root user  
-SHELL ["/bin/zsh", "-c"] 
+#SHELL ["/bin/zsh", "-c"] 
 
 RUN chsh -s $(which zsh) && \ 
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 COPY dotfiles/ ${HOME}
 
+SHELL ["/bin/zsh", "-c"]
 RUN source /usr/local/bin/virtualenvwrapper.sh && \
     mkvirtualenv base && \
     workon base && \
