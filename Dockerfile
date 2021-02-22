@@ -13,6 +13,7 @@ RUN apt-get update > /dev/null && apt-get install -qq \
     python3-pip \
     curl \
     wget \
+    iptables \
     zsh \
     git > /dev/null && \
     apt-get install -qq software-properties-common && \
@@ -39,13 +40,18 @@ RUN source /usr/local/bin/virtualenvwrapper.sh && \
     workon base && \
     pip3 install -r ${HOME}/.requirements.txt
 
-ENTRYPOINT [ "zsh" ]
+COPY scripts/base.sh /root/
+RUN chmod +x /root/base.sh
+
+ENTRYPOINT [ "/root/base.sh" ] 
 
 
 FROM base AS web
 
 RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - && \
-    apt-get install -y nodejs
+    apt-get install -y nodejs && \
+    curl -fsSL https://deno.land/x/install/install.sh | sh
+
 
 ENTRYPOINT [ "zsh" ]
 

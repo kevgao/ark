@@ -1,5 +1,6 @@
 {
     "name":"Ark",
     "image":"ghcr.io/kevgao/ark:latest-dev",
+    "runArgs": ["--privileged"],
     "extensions": ["ms-azuretools.vscode-docker"]
 }
