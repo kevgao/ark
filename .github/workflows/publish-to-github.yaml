@@ -31,6 +31,7 @@ jobs:
       - name: Checkout Repo and submodule
         uses: actions/checkout@v2
         with: 
+          token: ${{ secrets.PAK }}
           submodules: recursive
 
       - name: Setup QEMU
