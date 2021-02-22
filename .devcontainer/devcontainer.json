@@ -1,5 +1,5 @@
 {
     "name":"Ark",
-    "image":"kevgao/ark:latest",
-    "extensions": ["ms-python.python","james-yu.latex-workshop"]
+    "image":"ghcr.io/kevgao/ark:latest-dev",
+    "extensions": ["ms-azuretools.vscode-docker"]
 }
