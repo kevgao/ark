@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with: 
-          submodules:recursive
+          submodules: recursive
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v1

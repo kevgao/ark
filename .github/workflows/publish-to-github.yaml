@@ -28,10 +28,10 @@ jobs:
           echo "DL_TAG=deeplearning-dev" >> $GITHUB_ENV
           echo "WEB_TAG=web-dev" >> $GITHUB_ENV
 
-      - name: Checkout Repo
+      - name: Checkout Repo and submodule
         uses: actions/checkout@v2
         with: 
-          submodules:recursive
+          submodules: recursive
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v1
