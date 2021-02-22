@@ -1,5 +1,5 @@
 {
     "name":"Ark",
     "image":"ghcr.io/kevgao/ark:latest-dev",
-    "extensions": []
+    "extensions": ["ms-azuretools.vscode-docker"]
 }

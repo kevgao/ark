@@ -1,20 +1,44 @@
 # Ark
-## This is an All-in-one development environment for deep learning.
-
-## Current Environment
-
-### working environment
-
-* zsh(oh-my-zsh)
+### Curated development environment for web and deep learning.
 
 
-### basic supports
+## How to use
+Docker images published to DockerHub and Github Container Registry(ghcr.io). 
 
-* nvidia-cuda(latest)
-* Python3(3.8)
-* pip3
-* Pytorch
+### Docker Hub
+* base,latest
+  kevgao/ark:base
+  kevgao/ark:latest
+* web
+  kevgao/ark:web
+* deeplearning
+  kevgao/ark:deeplearning
+
+### Github Container Registry
+* base, latest
+  ghcr.io/ark:base
+  ghcr.io/ark:latest
+* web
+* deeplearning
 
 
 
-### 
+## Highlights
+
+* Container
+
+* Virtual Environments
+
+* Web Development
+
+* Machine Learning Development
+
+
+
+## Supports
+
+
+
+
+
+## Development
