@@ -14,7 +14,7 @@ RUN apt-get update > /dev/null && apt-get install -qq \
     curl \
     wget \
     zsh \
-    git && \
+    git > /dev/null && \
     apt-get install -qq software-properties-common && \
     #remove apt lists 
     rm -rf /var/lib/apt/lists/* && \
@@ -23,13 +23,13 @@ RUN apt-get update > /dev/null && apt-get install -qq \
     #docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
-    apt-get install -qq docker-ce docker-ce-cli containerd.io
+    apt-get install -qq docker-ce docker-ce-cli containerd.io > /dev/null
 
 # dot files. we are using root user  
 #SHELL ["/bin/zsh", "-c"] 
 
 RUN chsh -s $(which zsh) && \ 
-    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true > /dev/null
 
 COPY dotfiles/* ${HOME}/
 
