@@ -36,8 +36,8 @@ COPY dotfiles/ ${HOME}
 SHELL ["/bin/zsh", "-c"]
 RUN source /usr/local/bin/virtualenvwrapper.sh && \
     mkvirtualenv base && \
-    workon base && \
-    pip3 install -r ${HOME}/.requirements.txt
+    workon base
+    #pip3 install -r ${HOME}/.requirements.txt
 
 ENTRYPOINT [ "zsh" ]
 
