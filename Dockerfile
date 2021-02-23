@@ -3,7 +3,7 @@ FROM ubuntu:latest AS base
 ENV DEBIAN_FRONTEND=noninteractive \
     HOME=/root \
     WORKON_HOME=/root/.virtualenvs \
-    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 
 
 # Install Dependencies
 RUN apt-get update > /dev/null && apt-get install -qq \
@@ -14,6 +14,7 @@ RUN apt-get update > /dev/null && apt-get install -qq \
     curl \
     wget \
     iptables \
+    unzip \
     zsh \
     git > /dev/null && \
     apt-get install -qq software-properties-common && \
@@ -50,9 +51,13 @@ ENTRYPOINT [ "/root/base.sh" ]
 
 FROM base AS web
 
+ENV GOLANG_VERSION=1.16
+
+#node 15 and deno
 RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - && \
     apt-get install -y nodejs && \
-    curl -fsSL https://deno.land/x/install/install.sh | sh
+    curl -fsSL https://deno.land/x/install/install.sh | sh && \
+    wget -c https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
 
 
 ENTRYPOINT [ "zsh" ]
