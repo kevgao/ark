@@ -1,0 +1,4 @@
+task buildBase(type:Exec) { 
+    executable "zsh"
+    args "-c", "docker build -f Dockerfile --target base ."
+}
