@@ -2,6 +2,7 @@ name: Test Images
 
 on: 
   workflow_run: 
+    workflows: ["Publish to Github Registery"]
     types: 
       - completed
 
