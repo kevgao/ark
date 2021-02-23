@@ -3,11 +3,7 @@ FROM ubuntu:latest AS base
 ENV DEBIAN_FRONTEND=noninteractive \
     HOME=/root \
     WORKON_HOME=/root/.virtualenvs \
-<<<<<<< HEAD
-    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-=======
     VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 
->>>>>>> dev
 
 # Install Dependencies
 RUN apt-get update > /dev/null && apt-get install -qq \
@@ -47,15 +43,6 @@ RUN source /usr/local/bin/virtualenvwrapper.sh && \
     pip3 install -r ${HOME}/.requirements.txt
 
 
-<<<<<<< HEAD
-ENTRYPOINT [ "zsh" ]
-
-
-FROM base AS web
-
-RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - && \
-    apt-get install -y nodejs
-=======
 COPY scripts/base.sh /root/
 RUN chmod +x /root/base.sh
 
@@ -72,7 +59,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - && \
     curl -fsSL https://deno.land/x/install/install.sh | sh && \
     wget -c https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
 
->>>>>>> dev
 
 ENTRYPOINT [ "zsh" ]
 
