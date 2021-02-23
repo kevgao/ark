@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+dockerd &
+
+zsh
