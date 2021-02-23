@@ -1,0 +1,28 @@
+name: Test Images
+
+on: 
+  workflow_run: 
+    types: 
+      - completed
+
+jobs: 
+  test-images: 
+    name: Test Images  
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Checkout the repo   
+        uses: actions/checkout@v2   
+      - name: install container-structure-test
+        run: |
+          curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 
+          chmod +x container-structure-test-linux-amd64
+          mkdir -p $HOME/bin
+          export PATH=$PATH:$HOME/bin
+          mv container-structure-test-linux-amd64 $HOME/bin/container-structure-test
+      - name: test image       
+        run: |
+          container-structure-test test --image ghcr.io/kevgao/ark:latest --config tests/test.yaml
+
+        
+
+

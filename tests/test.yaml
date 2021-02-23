@@ -1,0 +1,13 @@
+schemaVersion: 2.0.0
+
+commandTests: 
+  - name: "test git"
+    command: "git"
+    args: ["version"]
+    expectedOutput: ["git version *"]
+
+fileExistenceTests:
+  - name: "dotfiles"  
+    path: "/root/.zshrc"
+    shouldExist: true
+
