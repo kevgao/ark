@@ -1,4 +1,19 @@
 task buildBase(type:Exec) { 
-    executable "zsh"
-    args "-c", "docker build -f Dockerfile --target base ."
+        executable "zsh"
+        args "-c", "docker build -f Dockerfile --target base ."
+}
+
+task buildWeb(type:Exec) { 
+        executable "zsh"
+        args "-c", "docker build -f Dockerfile --target web ."
+}
+
+task buildDeeplearning(type:Exec) { 
+        executable "zsh"
+        args "-c", "docker build -f Dockerfile --target deeplearning ."
+}
+
+task testBase(type:Exec) { 
+        executable "container-structure-test"
+        args "test", "--image ghcr.io/kevgao/ark:latest", "--config tests/test.yaml"
 }
