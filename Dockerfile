@@ -26,9 +26,10 @@ RUN apt-get update > /dev/null && apt-get install -qq \
     #docker
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
-    apt-get install -qq docker-ce docker-ce-cli containerd.io > /dev/null && \
-    curl -s "https://get.sdkman.io" | bash && \ 
-    sdk install gradle 6.8.3
+    apt-get install -qq docker-ce docker-ce-cli containerd.io > /dev/null
+    
+
+    
 
 # dot files. we are using root user  
 #SHELL ["/bin/zsh", "-c"] 
@@ -44,6 +45,12 @@ RUN source /usr/local/bin/virtualenvwrapper.sh && \
     mkvirtualenv base && \
     workon base && \
     pip3 install -r ${HOME}/.requirements.txt
+    
+    # java and jvm
+RUN curl -s "https://get.sdkman.io" | bash && \ 
+    source "/root/.sdkman/bin/sdkman-init.sh" && \
+    sdk install java && \
+    sdk install gradle 6.8.3
 
 
 COPY scripts/base.sh /root/
