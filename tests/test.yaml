@@ -3,7 +3,7 @@ schemaVersion: 2.0.0
 commandTests: 
   - name: "test git"
     command: "git"
-    args: ["version"]
+    args: ["version"]    #TODO: test git
     expectedOutput: ["git version *"]
 
 fileExistenceTests:

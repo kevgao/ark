@@ -4,6 +4,7 @@
     "runArgs": ["--privileged"],
     "extensions": [
 		"ms-azuretools.vscode-docker",
-		"alefragnani.bookmarks"
+		"alefragnani.bookmarks",
+		"richardwillis.vscode-gradle"
 	]
 }

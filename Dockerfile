@@ -15,17 +15,20 @@ RUN apt-get update > /dev/null && apt-get install -qq \
     wget \
     iptables \
     unzip \
+    zip \
     zsh \
     git > /dev/null && \
     apt-get install -qq software-properties-common && \
+    pip3 install -qq virtualenv virtualenvwrapper && \
     #remove apt lists 
     rm -rf /var/lib/apt/lists/* && \
-    #python virtualenvs
-    pip3 install -qq virtualenv virtualenvwrapper && \
+    apt-get clean
     #docker
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
-    apt-get install -qq docker-ce docker-ce-cli containerd.io > /dev/null
+    apt-get install -qq docker-ce docker-ce-cli containerd.io > /dev/null && \
+    curl -s "https://get.sdkman.io" | bash && \ 
+    sdk install gradle 6.8.3
 
 # dot files. we are using root user  
 #SHELL ["/bin/zsh", "-c"] 
