@@ -1,9 +1,10 @@
 # Ark
 ### Curated development environment for web and deep learning.
 
+## Attention
+Ark is to be based on Github Codespaces dev image and is dedicated to be a more comprehensive dev image
 
 ## How to use
-Docker images published to DockerHub and Github Container Registry(ghcr.io). 
 
 ### Docker Hub
 * base,latest
@@ -20,7 +21,6 @@ Docker images published to DockerHub and Github Container Registry(ghcr.io).
   ghcr.io/ark:latest
 * web
 * deeplearning
-
 
 
 ## Highlights
